@@ -36,15 +36,13 @@
       <h3>Where Competition Meets Excellence</h3>
       <a href="#register" class="hero-btn">Register Now</a>
     </div>
-    <!-- Tabs (navigation dots) -->
     <div class="hero-tabs"></div>
   </section>
 
   <!-- ABOUT -->
   <section id="about" class="about accent-blue">
     <h2>About Sportsfest</h2>
-    <p>
-      Get ready for the biggest sports celebration of the year — 
+Get ready for the biggest sports celebration of the year — 
       <strong>Kaizen High School Sportsfest 4.0</strong>! From 
       <strong>October 24th to 26th, 2025</strong>, our Gulberg campus in Lahore 
       will transform into the ultimate arena of passion, energy, and competition. 
@@ -63,34 +61,33 @@
     </p>
   </section>
 
-  <!-- CATEGORIES -->
-  <section id="categories" class="categories accent-orange">
-    <h2>Categories</h2>
-    <button class="carousel-btn left">❮</button>
-    <div class="carousel">
-      <div class="category"><img src="cutouts/basketball.png" alt="Basketball"></div>
-      <div class="category"><img src="cutouts/volleyball.png" alt="Volleyball"></div>
-      <div class="category"><img src="cutouts/paddle-tennis.png" alt="Paddle Tennis"></div>
-      <div class="category"><img src="cutouts/futsal.png" alt="Futsal"></div>
-      <div class="category"><img src="cutouts/badminton.png" alt="Badminton"></div>
-      <div class="category"><img src="cutouts/chess.png" alt="Chess"></div>
-      <div class="category"><img src="cutouts/ludo.png" alt="Ludo"></div>
-      <div class="category"><img src="cutouts/scavenger-hunt.png" alt="Scavenger Hunt"></div>
-      <div class="category"><img src="cutouts/table-tennis.png" alt="Table Tennis"></div>
-      <div class="category"><img src="cutouts/darts.png" alt="Darts"></div>
-      <div class="category"><img src="cutouts/gaming.png" alt="Gaming"></div>
-      <div class="category"><img src="cutouts/minute-to-win-it.png" alt="Minute to Win It"></div>
-      <div class="category"><img src="cutouts/cards.png" alt="Cards"></div>
-      <div class="category"><img src="cutouts/tug-of-war.png" alt="Tug of War"></div>
-      <div class="category"><img src="cutouts/dodgeball.png" alt="Dodgeball"></div>
-      <div class="category"><img src="cutouts/athletics.png" alt="Athletics"></div>
-      <div class="category"><img src="cutouts/arm-wrestling.png" alt="Arm Wrestling"></div>
-      <div class="category"><img src="cutouts/strongman.png" alt="Strongman"></div>
-      <div class="category"><img src="cutouts/cricket.png" alt="Cricket"></div>
-      <div class="category"><img src="cutouts/snooker.png" alt="Snooker"></div>
-    </div>
-    <button class="carousel-btn right">❯</button>
-  </section>
+ <!-- CATEGORIES (DROPDOWN GRID) -->
+<section id="categories" class="categories accent-orange">
+  <h2>Categories</h2>
+  <div class="category-grid" id="categoryGrid">
+    <div class="category"><img src="cutouts/basketball.png" alt="Basketball"></div>
+    <div class="category"><img src="cutouts/volleyball.png" alt="Volleyball"></div>
+    <div class="category"><img src="cutouts/paddle-tennis.png" alt="Paddle Tennis"></div>
+    <div class="category"><img src="cutouts/futsal.png" alt="Futsal"></div>
+    <div class="category"><img src="cutouts/badminton.png" alt="Badminton"></div>
+    <div class="category"><img src="cutouts/chess.png" alt="Chess"></div>
+    <div class="category"><img src="cutouts/ludo.png" alt="Ludo"></div>
+    <div class="category"><img src="cutouts/scavenger-hunt.png" alt="Scavenger Hunt"></div>
+    <div class="category"><img src="cutouts/table-tennis.png" alt="Table Tennis"></div>
+    <div class="category"><img src="cutouts/darts.png" alt="Darts"></div>
+    <div class="category"><img src="cutouts/gaming.png" alt="Gaming"></div>
+    <div class="category"><img src="cutouts/minute-to-win-it.png" alt="Minute to Win It"></div>
+    <div class="category"><img src="cutouts/tug-of-war.png" alt="Tug of War"></div>
+    <div class="category"><img src="cutouts/dodgeball.png" alt="Dodgeball"></div>
+    <div class="category"><img src="cutouts/athletics.png" alt="Athletics"></div>
+    <div class="category"><img src="cutouts/arm-wrestling.png" alt="Arm Wrestling"></div>
+    <div class="category"><img src="cutouts/strongman.png" alt="Strongman"></div>
+    <div class="category"><img src="cutouts/cricket.png" alt="Cricket"></div>
+    <div class="category"><img src="cutouts/snooker.png" alt="Snooker"></div>
+  </div>
+  <button id="showAllBtn" class="hero-btn" aria-expanded="false">Show All</button>
+</section>
+
 
   <!-- REGISTER -->
   <section id="register" class="register accent-blue">
@@ -111,12 +108,7 @@
   <section id="location" class="location accent-orange">
     <h2>Event Location</h2>
     <div class="google-map">
-      <iframe 
-        src="https://www.google.com/maps?q=Kaizen+A+Levels+High+School+Gulberg&output=embed"
-        allowfullscreen
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+      <iframe src="https://www.google.com/maps?q=Kaizen+A+Levels+High+School+Gulberg&output=embed"></iframe>
     </div>
   </section>
 
@@ -124,16 +116,8 @@
   <section id="contact" class="contact accent-blue">
     <h2>Contact Us</h2>
     <div class="cards">
-      <div class="card">
-        <strong>Registration Head</strong><br>
-        TBD<br>
-        📞 0300-0000000
-      </div>
-      <div class="card">
-        <strong>Registration Head</strong><br>
-        TBD<br>
-        📞 0300-0000000
-      </div>
+      <div class="card">Registration Head<br>👤 Shaheer Shafi<br>📞 0309-5911350</div>
+      <div class="card">Campus Head<br>👤 Sidra Waseem<br>📞 0323-4232696</div>
     </div>
   </section>
 
@@ -143,23 +127,13 @@
       <h2>Call Kaizen</h2>
       <p class="phone-number">0311 1747444</p>
       <div class="socials">
-        <a href="https://www.instagram.com/kaizen.gulberg/" target="_blank" aria-label="Kaizen Gulberg Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.instagram.com/kaizensportsfest4.0/" target="_blank" aria-label="Kaizen Sportsfest Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
+        <a href="https://www.instagram.com/kaizen.gulberg/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/kaizensportsfest4.0/" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
-      <p class="social-label">🔗 Left: Kaizen Gulberg | Right: Kaizen Sportsfest 4.0</p>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 Kaizen High Sportsfest 4.0. All Rights Reserved.</p>
-  </footer>
-
-  <!-- JS -->
+  <footer><p>&copy; 2025 Kaizen High Sportsfest 4.0. All Rights Reserved.</p></footer>
   <script src="script.js"></script>
 </body>
 </html>
