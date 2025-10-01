@@ -108,67 +108,47 @@ document.addEventListener("DOMContentLoaded", () => {
     hero.addEventListener("touchend", startHeroAutoPlay);
   }
 
-  // -----------------------------
-  // CATEGORIES CAROUSEL
-  // -----------------------------
-  const carousel = document.querySelector(".carousel");
-  if (carousel) {
-    let isUserInteracting = false;
-    let scrollSpeed = 1;
+  // =======================
+  // CATEGORIES DROPDOWN GRID
+  // =======================
+  const showAllBtn = document.getElementById("showAllBtn");
+  const categories = Array.from(document.querySelectorAll(".category"));
 
-    const checkLoop = () => {
-      if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 1) {
-        carousel.scrollLeft = 0;
-      } else if (carousel.scrollLeft <= 0) {
-        carousel.scrollLeft = carousel.scrollWidth - carousel.clientWidth;
-      }
-    };
+  function columnsForWidth(w) {
+    if (w < 480) return 2;
+    if (w < 768) return 3;
+    if (w < 1024) return 4;
+    return 5;
+  }
 
-    function autoScroll() {
-      if (!isUserInteracting) {
-        carousel.scrollLeft += scrollSpeed;
-        checkLoop();
-      }
-      requestAnimationFrame(autoScroll);
+  function applyInitialVisibility() {
+    categories.forEach(c => c.classList.remove("hidden"));
+    const w = window.innerWidth;
+    const cols = columnsForWidth(w);
+    const rowsToShow = (w < 768) ? 2 : 1;
+    const visibleCount = cols * rowsToShow;
+    categories.forEach((cat,i) => { if (i >= visibleCount) cat.classList.add("hidden"); });
+    if (showAllBtn) {
+      const anyHidden = categories.some(c => c.classList.contains("hidden"));
+      showAllBtn.textContent = anyHidden ? "Show All" : "Collapse";
+      showAllBtn.style.display = anyHidden ? "inline-block" : "none";
+      showAllBtn.setAttribute("aria-expanded","false");
     }
-    autoScroll();
+  }
 
-    carousel.addEventListener("mouseenter", () => { isUserInteracting = true; });
-    carousel.addEventListener("mouseleave", () => { isUserInteracting = false; });
-    carousel.addEventListener("touchstart", () => { isUserInteracting = true; });
-    carousel.addEventListener("touchend", () => { isUserInteracting = false; });
+  applyInitialVisibility();
+  window.addEventListener("resize", applyInitialVisibility);
 
-    const leftBtn = document.querySelector(".carousel-btn.left");
-    const rightBtn = document.querySelector(".carousel-btn.right");
-    if (leftBtn && rightBtn) {
-      leftBtn.addEventListener("click", () => {
-        isUserInteracting = true;
-        carousel.scrollLeft -= 250; checkLoop();
-        setTimeout(() => { isUserInteracting = false; }, 1500);
-      });
-      rightBtn.addEventListener("click", () => {
-        isUserInteracting = true;
-        carousel.scrollLeft += 250; checkLoop();
-        setTimeout(() => { isUserInteracting = false; }, 1500);
-      });
-    }
-
-    let isDown = false, startX, scrollLeft;
-    carousel.addEventListener("mousedown", (e) => {
-      isDown = true; startX = e.pageX; scrollLeft = carousel.scrollLeft;
-      isUserInteracting = true; carousel.style.cursor = "grabbing";
-    });
-    carousel.addEventListener("mouseleave", () => {
-      isDown = false; isUserInteracting = false; carousel.style.cursor = "grab";
-    });
-    carousel.addEventListener("mouseup", () => {
-      isDown = false; isUserInteracting = false; carousel.style.cursor = "grab";
-    });
-    carousel.addEventListener("mousemove", (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const walk = (e.pageX - startX) * 2;
-      carousel.scrollLeft = scrollLeft - walk; checkLoop();
+  if (showAllBtn) {
+    showAllBtn.addEventListener("click", () => {
+      const expanded = showAllBtn.getAttribute("aria-expanded") === "true";
+      if (expanded) {
+        applyInitialVisibility();
+      } else {
+        categories.forEach(cat => cat.classList.remove("hidden"));
+        showAllBtn.textContent = "Collapse";
+        showAllBtn.setAttribute("aria-expanded","true");
+      }
     });
   }
 
