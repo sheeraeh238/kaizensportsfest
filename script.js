@@ -109,10 +109,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // =======================
-  // CATEGORIES DROPDOWN GRID
+  // CATEGORIES DROPDOWN GRID (FIXED)
   // =======================
   const showAllBtn = document.getElementById("showAllBtn");
   const categories = Array.from(document.querySelectorAll(".category"));
+  let isExpanded = false; // track expanded state
 
   function columnsForWidth(w) {
     if (w < 480) return 2;
@@ -127,12 +128,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const cols = columnsForWidth(w);
     const rowsToShow = (w < 768) ? 2 : 1;
     const visibleCount = cols * rowsToShow;
-    categories.forEach((cat,i) => { if (i >= visibleCount) cat.classList.add("hidden"); });
+
+    if (!isExpanded) {
+      categories.forEach((cat, i) => {
+        if (i >= visibleCount) cat.classList.add("hidden");
+      });
+    }
+
     if (showAllBtn) {
       const anyHidden = categories.some(c => c.classList.contains("hidden"));
-      showAllBtn.textContent = anyHidden ? "Show All" : "Collapse";
-      showAllBtn.style.display = anyHidden ? "inline-block" : "none";
-      showAllBtn.setAttribute("aria-expanded","false");
+      showAllBtn.textContent = (!isExpanded && anyHidden) ? "Show All" : "Collapse";
+      showAllBtn.style.display = anyHidden || isExpanded ? "inline-block" : "none";
+      showAllBtn.setAttribute("aria-expanded", isExpanded ? "true" : "false");
     }
   }
 
@@ -141,13 +148,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (showAllBtn) {
     showAllBtn.addEventListener("click", () => {
-      const expanded = showAllBtn.getAttribute("aria-expanded") === "true";
-      if (expanded) {
-        applyInitialVisibility();
-      } else {
+      isExpanded = !isExpanded;
+      if (isExpanded) {
         categories.forEach(cat => cat.classList.remove("hidden"));
         showAllBtn.textContent = "Collapse";
-        showAllBtn.setAttribute("aria-expanded","true");
+        showAllBtn.setAttribute("aria-expanded", "true");
+      } else {
+        applyInitialVisibility();
       }
     });
   }
